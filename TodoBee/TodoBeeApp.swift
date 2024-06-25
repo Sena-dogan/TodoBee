@@ -11,7 +11,9 @@ import SwiftUI
 struct TodoBeeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView{
+                ListView()
+            }
         }
     }
 }
