@@ -16,6 +16,7 @@
 		A69CAB7C2C2B00BA0077883E /* TodoBeeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69CAB7B2C2B00BA0077883E /* TodoBeeUITestsLaunchTests.swift */; };
 		A69CAB8A2C2B02180077883E /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69CAB892C2B02180077883E /* ListView.swift */; };
 		A69CAB8C2C2B028B0077883E /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69CAB8B2C2B028B0077883E /* ListRowView.swift */; };
+		A69CAB8E2C2B05360077883E /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69CAB8D2C2B05360077883E /* AddView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		A69CAB7B2C2B00BA0077883E /* TodoBeeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoBeeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A69CAB892C2B02180077883E /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		A69CAB8B2C2B028B0077883E /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
+		A69CAB8D2C2B05360077883E /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			children = (
 				A69CAB892C2B02180077883E /* ListView.swift */,
 				A69CAB8B2C2B028B0077883E /* ListRowView.swift */,
+				A69CAB8D2C2B05360077883E /* AddView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			files = (
 				A69CAB612C2B00B80077883E /* ContentView.swift in Sources */,
 				A69CAB5F2C2B00B80077883E /* TodoBeeApp.swift in Sources */,
+				A69CAB8E2C2B05360077883E /* AddView.swift in Sources */,
 				A69CAB8A2C2B02180077883E /* ListView.swift in Sources */,
 				A69CAB8C2C2B028B0077883E /* ListRowView.swift in Sources */,
 			);
