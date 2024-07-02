@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A68C21382C3433020044A885 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C21372C3433020044A885 /* ItemModel.swift */; };
 		A69CAB5F2C2B00B80077883E /* TodoBeeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69CAB5E2C2B00B80077883E /* TodoBeeApp.swift */; };
 		A69CAB612C2B00B80077883E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69CAB602C2B00B80077883E /* ContentView.swift */; };
 		A69CAB632C2B00B90077883E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A69CAB622C2B00B90077883E /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A68C21372C3433020044A885 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		A69CAB5B2C2B00B80077883E /* TodoBee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoBee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A69CAB5E2C2B00B80077883E /* TodoBeeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoBeeApp.swift; sourceTree = "<group>"; };
 		A69CAB602C2B00B80077883E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +79,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A68C21362C3432E10044A885 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A68C21372C3433020044A885 /* ItemModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		A69CAB522C2B00B80077883E = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +110,7 @@
 		A69CAB5D2C2B00B80077883E /* TodoBee */ = {
 			isa = PBXGroup;
 			children = (
+				A68C21362C3432E10044A885 /* Models */,
 				A69CAB882C2B01FC0077883E /* Views */,
 				A69CAB5E2C2B00B80077883E /* TodoBeeApp.swift */,
 				A69CAB602C2B00B80077883E /* ContentView.swift */,
@@ -274,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A68C21382C3433020044A885 /* ItemModel.swift in Sources */,
 				A69CAB612C2B00B80077883E /* ContentView.swift in Sources */,
 				A69CAB5F2C2B00B80077883E /* TodoBeeApp.swift in Sources */,
 				A69CAB8E2C2B05360077883E /* AddView.swift in Sources */,

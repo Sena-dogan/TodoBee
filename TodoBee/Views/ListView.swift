@@ -9,17 +9,17 @@ import SwiftUI
 
 struct ListView: View {
     
-    @State var items: [String] = [
-        "Bumblebee is AWESOME and a CAMARO!!!",
-        "Optimus Prime is The Leader",
-        "Mirage is Very Funnyy :))",
-        "Nightbird is a R33 Skyline GT-R"
+    @State var items: [ItemModel] = [
+        ItemModel(title: "Bumblebee is AWESOME and a CAMARO!!!", isCompleted: false),
+        ItemModel(title: "Optimus Prime is The Leader", isCompleted: false),
+        ItemModel(title: "Mirage is Very Funnyy :))", isCompleted: true),
+        ItemModel(title: "Nightbird is a R33 Skyline GT-R", isCompleted: true)
     ]
     
     var body: some View {
         List{
-            ForEach(items, id: \.self) { item in
-                ListRowView(title: item)
+            ForEach(items) { item in
+                ListRowView(item: item)
             }
         }
         .listStyle(PlainListStyle())
