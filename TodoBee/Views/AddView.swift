@@ -49,5 +49,6 @@ struct AddView_Previews: PreviewProvider {
         NavigationView {
             AddView()
         }
+        .environmentObject(ListViewModel())
     }
 }
