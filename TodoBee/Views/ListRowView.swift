@@ -14,6 +14,7 @@ struct ListRowView: View {
     var body: some View {
         HStack {
             Image(systemName: item.isCompleted ? "checkmark.circle" : "circle")
+                .font(.system(size: 30))
                 .foregroundColor(item.isCompleted ? .orange : .purple)
             Text(item.title)
             Spacer()
