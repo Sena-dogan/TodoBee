@@ -13,19 +13,18 @@ struct AddView: View {
     @EnvironmentObject var listViewModel: ListViewModel
     @State var textFieldText: String = ""
     
-    @State var alertTitle: String = ""
-    @State var showAlert: Bool = false
-    
     var body: some View {
-        ScrollView{
-            VStack{
+        ScrollView {
+            VStack {
                 TextField("Type something here...", text: $textFieldText)
                     .padding(.horizontal)
                     .frame(height: 55)
                     .background(Color(.systemGray5))
                     .cornerRadius(10)
                 
-                Button(action: saveButtonPressed, label: {
+                Button(action: {
+                    listViewModel.saveButtonPressed(text: textFieldText, presentationMode: presentationMode)
+                }, label: {
                     Text("Save".uppercased())
                         .foregroundColor(.white)
                         .font(.headline)
@@ -35,32 +34,13 @@ struct AddView: View {
                         .cornerRadius(10)
                 })
                 .padding(.vertical)
-
             }
             .padding(14)
         }
         .navigationTitle("Add an Item ✍︎")
-        .alert(isPresented: $showAlert, content: getAlert)
-    }
-    
-    func saveButtonPressed() {
-        if textIsAppropriate() {
-            listViewModel.addItem(title: textFieldText)
-            presentationMode.wrappedValue.dismiss()
+        .alert(isPresented: $listViewModel.showAlert) {
+            Alert(title: Text(listViewModel.alertTitle))
         }
-    }
-    
-    func textIsAppropriate() -> Bool {
-        if textFieldText.count <= 0 {
-            alertTitle = "Your item can not be empty 😱😱😱"
-            showAlert.toggle()
-            return false
-        }
-        return true
-    }
-    
-    func getAlert() -> Alert {
-        return Alert(title: Text(alertTitle))
     }
 }
 
