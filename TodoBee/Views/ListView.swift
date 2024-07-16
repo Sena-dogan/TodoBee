@@ -12,12 +12,12 @@ struct ListView: View {
     @EnvironmentObject var listViewModel: ListViewModel
     
     var body: some View {
-        List{
-            ForEach(listViewModel.items) { item in
+        List {
+            ForEach(Array(listViewModel.items.enumerated()), id: \.element.id) { index, item in
                 ListRowView(item: item)
                     .onTapGesture {
                         withAnimation(.default) {
-                            listViewModel.updateItem(item: item)
+                            listViewModel.updateItem(at: index)
                         }
                     }
             }
@@ -25,7 +25,7 @@ struct ListView: View {
             .onMove(perform: listViewModel.moveItem)
         }
         .listStyle(PlainListStyle())
-        .navigationTitle("Todo List ✔︎")
+        .navigationTitle(Constants.Texts.listViewTitle)
         .navigationBarItems(
             leading: EditButton(),
             trailing: NavigationLink(destination: AddView()) {
@@ -38,7 +38,7 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView{
+        NavigationView {
             ListView()
         }
         .environmentObject(ListViewModel())

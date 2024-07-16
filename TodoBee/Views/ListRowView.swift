@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ListRowView: View {
     
-    let item: ItemModel
+    @ObservedObject var viewModel: ListRowViewModel
     
     var body: some View {
         HStack {
-            Image(systemName: item.isCompleted ? "checkmark.circle" : "circle")
+            Image(systemName: viewModel.imageName)
                 .font(.system(size: 30))
-                .foregroundColor(item.isCompleted ? .orange : .purple)
-            Text(item.title)
+                .foregroundColor(viewModel.imageColor)
+            Text(viewModel.item.title)
             Spacer()
         }
         .font(.title2)
@@ -30,8 +30,8 @@ struct ListRowView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            ListRowView(item: item1)
-            ListRowView(item: item2)
+            ListRowView(viewModel: ListRowViewModel(item: item1))
+            ListRowView(viewModel: ListRowViewModel(item: item2))
         }
     }
 }

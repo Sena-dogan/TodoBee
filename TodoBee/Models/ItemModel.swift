@@ -6,11 +6,20 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct ItemModel: Identifiable {
     let id: String
     let title: String
     let isCompleted: Bool
+    
+    var imageName: String {
+            return isCompleted ? "checkmark.circle" : "circle"
+    }
+        
+    var imageColor: Color {
+            return isCompleted ? .orange : .purple
+    }
     
     init(id: String = UUID().uuidString, title: String, isCompleted: Bool) {
         self.id = id

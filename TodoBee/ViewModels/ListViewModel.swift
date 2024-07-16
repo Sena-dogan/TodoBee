@@ -8,10 +8,10 @@
 import Foundation
 import SwiftUI
 
-class ListViewModel: ObservableObject {
+final class ListViewModel: ObservableObject {
     
     @Published var items: [ItemModel] = []
-    @Published var alertTitle: String = ""
+    var alertTitle: String = ""
     @Published var showAlert: Bool = false
     
     init() {
@@ -41,15 +41,13 @@ class ListViewModel: ObservableObject {
         items.append(newItem)
     }
     
-    func updateItem(item: ItemModel) {
-        if let index = items.firstIndex(where: { $0.id == item.id }) {
-            items[index] = item.updateModel()
-        }
+    func updateItem(at index: Int) {
+        items[index] = items[index].updateModel()
     }
     
     func textIsAppropriate(text: String) -> Bool {
         if text.count <= 0 {
-            alertTitle = "Your item can not be empty 😱😱😱"
+            alertTitle = Constants.Texts.alertTitle
             showAlert.toggle()
             return false
         }
@@ -57,9 +55,10 @@ class ListViewModel: ObservableObject {
     }
 
     func saveButtonPressed(text: String, presentationMode: Binding<PresentationMode>) {
-        if textIsAppropriate(text: text) {
+            guard textIsAppropriate(text: text) else {
+                return
+            }
             addItem(title: text)
             presentationMode.wrappedValue.dismiss()
-        }
     }
 }

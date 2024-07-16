@@ -16,30 +16,35 @@ struct AddView: View {
     var body: some View {
         ScrollView {
             VStack {
-                TextField("Type something here...", text: $textFieldText)
+                TextField(Constants.Texts.textFieldPlaceholder, text: $textFieldText)
                     .padding(.horizontal)
-                    .frame(height: 55)
-                    .background(Color(.systemGray5))
+                    .frame(height: Constants.Dimensions.textFieldHeight)
+                    .background(Constants.Colors.textFieldBackground)
                     .cornerRadius(10)
                 
                 Button(action: {
                     listViewModel.saveButtonPressed(text: textFieldText, presentationMode: presentationMode)
                 }, label: {
-                    Text("Save".uppercased())
+                    Text(Constants.Texts.saveButton.uppercased())
                         .foregroundColor(.white)
                         .font(.headline)
-                        .frame(height: 55)
+                        .frame(height: Constants.Dimensions.buttonHeight)
                         .frame(maxWidth: .infinity)
-                        .background(Color.orange)
+                        .background(Constants.Colors.buttonBackground)
                         .cornerRadius(10)
                 })
                 .padding(.vertical)
             }
-            .padding(14)
+            .padding(Constants.Dimensions.padding)
         }
-        .navigationTitle("Add an Item ✍︎")
+        .navigationTitle(Constants.Texts.addItemTitle)
         .alert(isPresented: $listViewModel.showAlert) {
-            Alert(title: Text(listViewModel.alertTitle))
+            Alert(
+                title: Text(listViewModel.alertTitle),
+                dismissButton: .default(Text(Constants.Texts.alertDismissTitle)) {
+                    listViewModel.showAlert = false
+                }
+            )
         }
     }
 }
