@@ -10,22 +10,26 @@ import SwiftUI
 
 final class ListViewModel: ObservableObject {
     
-    @Published var items: [ItemModel] = []
+    @Published var items: [ItemModel] = [] {
+        didSet {
+            saveItems()
+        }
+    }
     var alertTitle: String = ""
     @Published var showAlert: Bool = false
+    let itemsKey: String = "items_list "
+    
     
     init() {
         getItems()
     }
     
     func getItems() {
-        let newItems = [
-            ItemModel(title: "Bumblebee is AWESOME and a CAMARO!!!", isCompleted: false),
-            ItemModel(title: "Optimus Prime is The Leader", isCompleted: false),
-            ItemModel(title: "Mirage is Very Funnyy :))", isCompleted: true),
-            ItemModel(title: "Nightbird is a R33 Skyline GT-R", isCompleted: true)
-        ]
-        items.append(contentsOf: newItems)
+        guard
+            let data = UserDefaults.standard.data(forKey: itemsKey),
+            let savedItems = try? JSONDecoder().decode([ItemModel].self, from: data)
+        else {return}
+        self.items = savedItems
     }
     
     func deleteItem(indexSet: IndexSet) {
@@ -60,5 +64,11 @@ final class ListViewModel: ObservableObject {
             }
             addItem(title: text)
             presentationMode.wrappedValue.dismiss()
+    }
+    
+    func saveItems() {
+        if let encodeData = try? JSONEncoder().encode(items) {
+            UserDefaults.standard.set(encodeData, forKey: itemsKey)
+        }
     }
 }
