@@ -14,7 +14,7 @@ struct ListView: View {
     var body: some View {
         List {
             ForEach(Array(listViewModel.items.enumerated()), id: \.element.id) { index, item in
-                ListRowView(item: item)
+                ListRowView(viewModel: ListRowViewModel(item: item))
                     .onTapGesture {
                         withAnimation(.default) {
                             listViewModel.updateItem(at: index)
