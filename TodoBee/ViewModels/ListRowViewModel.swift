@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class ListRowViewModel: ObservableObject {
+final class ListRowViewModel: ObservableObject {
     @Published var item: ItemModel
     
     init(item: ItemModel) {

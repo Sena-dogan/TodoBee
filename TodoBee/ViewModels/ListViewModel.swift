@@ -12,24 +12,20 @@ final class ListViewModel: ObservableObject {
     
     @Published var items: [ItemModel] = [] {
         didSet {
-            saveItems()
+            UserDefaultsHelper.shared.saveItems(items)
         }
     }
     var alertTitle: String = ""
     @Published var showAlert: Bool = false
-    let itemsKey: String = "items_list "
-    
     
     init() {
         getItems()
     }
     
     func getItems() {
-        guard
-            let data = UserDefaults.standard.data(forKey: itemsKey),
-            let savedItems = try? JSONDecoder().decode([ItemModel].self, from: data)
-        else {return}
-        self.items = savedItems
+        if let savedItems = UserDefaultsHelper.shared.getItems() {
+            self.items = savedItems
+        }
     }
     
     func deleteItem(indexSet: IndexSet) {
@@ -59,16 +55,10 @@ final class ListViewModel: ObservableObject {
     }
 
     func saveButtonPressed(text: String, presentationMode: Binding<PresentationMode>) {
-            guard textIsAppropriate(text: text) else {
-                return
-            }
-            addItem(title: text)
-            presentationMode.wrappedValue.dismiss()
-    }
-    
-    func saveItems() {
-        if let encodeData = try? JSONEncoder().encode(items) {
-            UserDefaults.standard.set(encodeData, forKey: itemsKey)
+        guard textIsAppropriate(text: text) else {
+            return
         }
+        addItem(title: text)
+        presentationMode.wrappedValue.dismiss()
     }
 }
