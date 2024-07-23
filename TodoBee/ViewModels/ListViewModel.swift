@@ -37,10 +37,9 @@ final class ListViewModel: ObservableObject {
     }
     
     func addItem(title: String) {
-        let newItem = ItemModel(title: title, isCompleted: false)
-        items.append(newItem)
+        items.append(ItemModel(title: title, isCompleted: false))
     }
-    
+
     func updateItem(at index: Int) {
         items[index] = items[index].updateModel()
     }
