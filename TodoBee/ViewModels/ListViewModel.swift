@@ -41,7 +41,7 @@ final class ListViewModel: ObservableObject {
     }
 
     func updateItem(at index: Int) {
-        items[index] = items[index].updateModel()
+        items[index].isCompleted.toggle()
     }
     
     func textIsAppropriate(text: String) -> Bool {
