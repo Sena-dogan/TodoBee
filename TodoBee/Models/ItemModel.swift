@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+// MARK: - Item Model
 struct ItemModel: Identifiable, Codable {
     let id: String
     var title: String
