@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainTabView: View {
     @State private var selectedTab = 0
-
+    
     var body: some View {
         TabView(selection: $selectedTab) {
             NavigationView{
@@ -21,7 +21,7 @@ struct MainTabView: View {
                 
             }
             .tag(0)
-
+            
             NavigationView{
                 AddView()
             }
@@ -31,6 +31,15 @@ struct MainTabView: View {
                 
             }
             .tag(1)
+            
+            NavigationView {
+                MoviesGridView()
+            }
+            .tabItem {
+                Image(systemName: "film.fill")
+                Text("Movies")
+            }
+            .tag(2)
         }
     }
 }
