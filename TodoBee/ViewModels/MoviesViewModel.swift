@@ -13,7 +13,7 @@ class MoviesViewModel: ObservableObject {
     
     func loadMovies() async {
         do {
-            self.movies = try await NetworkManager.shared.fetchMovies()
+            self.movies = try await NetworkManager.shared.fetchPopularMovies()
         } catch {
             print("Failed to load movies: \(error)")
         }
