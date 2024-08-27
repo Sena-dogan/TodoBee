@@ -7,9 +7,22 @@
 
 import Foundation
 
-enum MovieCategory: String {
+enum MovieCategory: String, CaseIterable {
     case popular
     case topRated = "top_rated"
     case upcoming
     case nowPlaying = "now_playing"
+    
+    var name: String {
+        switch self {
+        case .popular:
+            return "Popular"
+        case .topRated:
+            return "Top Rated"
+        case .upcoming:
+            return "Upcoming"
+        case .nowPlaying:
+            return "Now Playing"
+        }
+    }
 }
