@@ -22,16 +22,6 @@ struct MainTabView: View {
             }
             .tag(0)
             
-            NavigationView{
-                AddView()
-            }
-            .tabItem {
-                Image(systemName: "person.fill")
-                Text("Profile")
-                
-            }
-            .tag(1)
-            
             NavigationView {
                 MoviesGridView()
             }
@@ -39,7 +29,7 @@ struct MainTabView: View {
                 Image(systemName: "film.fill")
                 Text("Movies")
             }
-            .tag(2)
+            .tag(1)
             
             NavigationView {
                 TVSeriesGridView()
@@ -48,7 +38,7 @@ struct MainTabView: View {
                 Image(systemName: "film.fill")
                 Text("TV")
             }
-            .tag(3)
+            .tag(2)
         }
     }
 }
