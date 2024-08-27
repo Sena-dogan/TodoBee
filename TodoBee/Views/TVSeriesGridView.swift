@@ -1,15 +1,15 @@
 //
-//  MoviesGridView.swift
+//  TVSeriesGridView.swift
 //  TodoBee
 //
-//  Created by Zeynep Sena Doğan on 20.08.2024.
+//  Created by Zeynep Sena Doğan on 27.08.2024.
 //
 
 import SwiftUI
 
-struct MoviesGridView: View {
-    @StateObject private var viewModel = MoviesViewModel()
-    @State private var selectedCategory: MovieCategory = .popular
+struct TVSeriesGridView: View {
+    @StateObject private var viewModel = TVSeriesViewModel()
+    @State private var selectedCategory: TVSeriesCategory = .popular
     
     private let columns = [
         GridItem(.flexible()),
@@ -19,8 +19,8 @@ struct MoviesGridView: View {
     var body: some View {
         VStack {
             Picker("Select Category", selection: $selectedCategory) {
-                ForEach(MovieCategory.allCases, id: \.self) { category in
-                    Text(category.name).tag(category)
+                ForEach(TVSeriesCategory.allCases, id: \.self) { category in
+                    Text(category.displayName()).tag(category)
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
@@ -28,10 +28,10 @@ struct MoviesGridView: View {
             
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(viewModel.movies) { movie in
-                        NavigationLink(destination: MovieDetailView(movie: movie)) {
+                    ForEach(viewModel.tvSeries) { series in
+                        NavigationLink(destination: TVSeriesDetailView(tvSeries: series)) {
                             VStack {
-                                AsyncImage(url: movie.posterURL) { image in
+                                AsyncImage(url: series.posterURL) { image in
                                     image
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
@@ -40,7 +40,7 @@ struct MoviesGridView: View {
                                 } placeholder: {
                                     ProgressView()
                                 }
-                                Text(movie.title)
+                                Text(series.title)
                                     .font(.headline)
                                     .multilineTextAlignment(.center)
                                     .padding(.top, 5)
@@ -50,17 +50,17 @@ struct MoviesGridView: View {
                 }
                 .padding()
             }
-            .navigationTitle("\(selectedCategory.name.capitalized) Movies")
             .onAppear {
                 Task {
-                    await viewModel.loadMovies(for: selectedCategory)
+                    await viewModel.loadTVSeries(for: selectedCategory)
                 }
             }
             .onChange(of: selectedCategory) { newCategory in
                 Task {
-                    await viewModel.loadMovies(for: newCategory)
+                    await viewModel.loadTVSeries(for: newCategory)
                 }
             }
         }
+        .navigationTitle("TV Series")
     }
 }

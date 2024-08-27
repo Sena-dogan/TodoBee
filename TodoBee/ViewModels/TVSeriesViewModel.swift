@@ -11,7 +11,7 @@ import Foundation
 class TVSeriesViewModel: ObservableObject {
     @Published var tvSeries: [TVSeries] = []
     
-    func loadTVSeries(for category: TVCategory) async {
+    func loadTVSeries(for category: TVSeriesCategory) async {
         do {
             self.tvSeries = try await NetworkManager.shared.fetchTVSeries(for: category)
         } catch {

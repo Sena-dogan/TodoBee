@@ -9,8 +9,9 @@ import Foundation
 
 struct TVSeries: Identifiable, Decodable {
     let id: Int
-    let name: String
+    let title: String
     let posterPath: String?
+    let originalLanguage: String
     let overview: String
     let firstAirDate: String
     let voteAverage: Double
@@ -18,8 +19,9 @@ struct TVSeries: Identifiable, Decodable {
     
     enum CodingKeys: String, CodingKey {
         case id
-        case name
+        case title = "name"
         case posterPath = "poster_path"
+        case originalLanguage = "original_language"
         case overview
         case firstAirDate = "first_air_date"
         case voteAverage = "vote_average"
@@ -33,4 +35,3 @@ struct TVSeries: Identifiable, Decodable {
         return nil
     }
 }
-

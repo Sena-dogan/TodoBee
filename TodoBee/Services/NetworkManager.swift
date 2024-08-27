@@ -26,7 +26,7 @@ class NetworkManager {
         return movieResponse.results
     }
     
-    func fetchTVSeries(for category: TVCategory) async throws -> [TVSeries] {
+    func fetchTVSeries(for category: TVSeriesCategory) async throws -> [TVSeries] {
         let tvResponse: TVResponse = try await fetch(from: "tv/\(category.rawValue)", as: TVResponse.self)
         return tvResponse.results
     }

@@ -7,9 +7,22 @@
 
 import Foundation
 
-enum TVCategory: String {
-    case airingToday = "airing_today"
-    case onTheAir = "on_the_air"
+enum TVSeriesCategory: String, CaseIterable {
     case popular
     case topRated = "top_rated"
+    case airingToday = "airing_today"
+    case onTheAir = "on_the_air"
+    
+    func displayName() -> String {
+        switch self {
+        case .popular:
+            return "Popular"
+        case .topRated:
+            return "Top Rated"
+        case .airingToday:
+            return "Airing Today"
+        case .onTheAir:
+            return "On The Air"
+        }
+    }
 }
