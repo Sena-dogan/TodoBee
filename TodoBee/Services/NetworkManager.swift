@@ -11,14 +11,7 @@ class NetworkManager {
     static let shared = NetworkManager()
     private let apiKey = "54bff5bee509b27e4eb82ef042d64876"
     
-    enum MovieCategory: String {
-        case popular = "popular"
-        case nowPlaying = "now_playing"
-        case topRated = "top_rated"
-        case upcoming = "upcoming"
-    }
-    
-    func fetch<T: Decodable>(from endpoint: String, as type: T.Type) async throws -> T {
+    private func fetch<T: Decodable>(from endpoint: String, as type: T.Type) async throws -> T {
         guard let url = URL(string: "https://api.themoviedb.org/3/\(endpoint)?api_key=\(apiKey)&language=en-US&page=1") else {
             throw URLError(.badURL)
         }
@@ -32,10 +25,18 @@ class NetworkManager {
         let movieResponse: MovieResponse = try await fetch(from: "movie/\(category.rawValue)", as: MovieResponse.self)
         return movieResponse.results
     }
+    
+    func fetchTVSeries(for category: TVCategory) async throws -> [TVSeries] {
+        let tvResponse: TVResponse = try await fetch(from: "tv/\(category.rawValue)", as: TVResponse.self)
+        return tvResponse.results
+    }
 }
-
 
 struct MovieResponse: Decodable {
     let results: [Movie]
+}
+
+struct TVResponse: Decodable {
+    let results: [TVSeries]
 }
 

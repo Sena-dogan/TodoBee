@@ -13,6 +13,10 @@
 		A662E5952C74F1D60074C81A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A662E5942C74F1D60074C81A /* NetworkManager.swift */; };
 		A662E5972C74F2EF0074C81A /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A662E5962C74F2EF0074C81A /* MoviesViewModel.swift */; };
 		A662E5992C74F3310074C81A /* MoviesGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A662E5982C74F3310074C81A /* MoviesGridView.swift */; };
+		A67CE09A2C77E29900F54956 /* MovieCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67CE0992C77E29900F54956 /* MovieCategory.swift */; };
+		A67CE09C2C77E51600F54956 /* TVCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67CE09B2C77E51600F54956 /* TVCategory.swift */; };
+		A67CE09E2C77E5F000F54956 /* TVSeriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67CE09D2C77E5F000F54956 /* TVSeriesModel.swift */; };
+		A67CE0A02C77E64500F54956 /* TVSeriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67CE09F2C77E64500F54956 /* TVSeriesViewModel.swift */; };
 		A68C21382C3433020044A885 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C21372C3433020044A885 /* ItemModel.swift */; };
 		A69CAB5F2C2B00B80077883E /* TodoBeeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69CAB5E2C2B00B80077883E /* TodoBeeApp.swift */; };
 		A69CAB612C2B00B80077883E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69CAB602C2B00B80077883E /* ContentView.swift */; };
@@ -54,6 +58,10 @@
 		A662E5942C74F1D60074C81A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A662E5962C74F2EF0074C81A /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
 		A662E5982C74F3310074C81A /* MoviesGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesGridView.swift; sourceTree = "<group>"; };
+		A67CE0992C77E29900F54956 /* MovieCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCategory.swift; sourceTree = "<group>"; };
+		A67CE09B2C77E51600F54956 /* TVCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCategory.swift; sourceTree = "<group>"; };
+		A67CE09D2C77E5F000F54956 /* TVSeriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesModel.swift; sourceTree = "<group>"; };
+		A67CE09F2C77E64500F54956 /* TVSeriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesViewModel.swift; sourceTree = "<group>"; };
 		A68C21372C3433020044A885 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		A69CAB5B2C2B00B80077883E /* TodoBee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoBee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A69CAB5E2C2B00B80077883E /* TodoBeeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoBeeApp.swift; sourceTree = "<group>"; };
@@ -102,17 +110,27 @@
 		A66224D92C47FF8F006F9627 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A67CE0982C77E28100F54956 /* Enums */,
 				A66224DA2C47FFC3006F9627 /* UserDefaultsHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		A662E5932C74F1A60074C81A /* Service */ = {
+		A662E5932C74F1A60074C81A /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				A662E5942C74F1D60074C81A /* NetworkManager.swift */,
 			);
-			path = Service;
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A67CE0982C77E28100F54956 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				A67CE0992C77E29900F54956 /* MovieCategory.swift */,
+				A67CE09B2C77E51600F54956 /* TVCategory.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		A68C21362C3432E10044A885 /* Models */ = {
@@ -120,6 +138,7 @@
 			children = (
 				A68C21372C3433020044A885 /* ItemModel.swift */,
 				A662E5912C74E3370074C81A /* MovieModel.swift */,
+				A67CE09D2C77E5F000F54956 /* TVSeriesModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -147,7 +166,7 @@
 		A69CAB5D2C2B00B80077883E /* TodoBee */ = {
 			isa = PBXGroup;
 			children = (
-				A662E5932C74F1A60074C81A /* Service */,
+				A662E5932C74F1A60074C81A /* Services */,
 				A66224D92C47FF8F006F9627 /* Helpers */,
 				A6EAEB1D2C46A7C900B5E192 /* Resources */,
 				A6DC84582C3BFD9A0086340D /* ViewModels */,
@@ -204,6 +223,7 @@
 				A6DC84592C3BFDBE0086340D /* ListViewModel.swift */,
 				A6EAEB262C46B27F00B5E192 /* ListRowViewModel.swift */,
 				A662E5962C74F2EF0074C81A /* MoviesViewModel.swift */,
+				A67CE09F2C77E64500F54956 /* TVSeriesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -349,10 +369,12 @@
 			files = (
 				A662E5922C74E3370074C81A /* MovieModel.swift in Sources */,
 				A66224DB2C47FFC3006F9627 /* UserDefaultsHelper.swift in Sources */,
+				A67CE09A2C77E29900F54956 /* MovieCategory.swift in Sources */,
 				A68C21382C3433020044A885 /* ItemModel.swift in Sources */,
 				A662E5952C74F1D60074C81A /* NetworkManager.swift in Sources */,
 				A6EAEB272C46B27F00B5E192 /* ListRowViewModel.swift in Sources */,
 				A662E5992C74F3310074C81A /* MoviesGridView.swift in Sources */,
+				A67CE09C2C77E51600F54956 /* TVCategory.swift in Sources */,
 				A69CAB612C2B00B80077883E /* ContentView.swift in Sources */,
 				A6DC845A2C3BFDBE0086340D /* ListViewModel.swift in Sources */,
 				A662E5902C74DFE40074C81A /* MainTabView.swift in Sources */,
@@ -360,9 +382,11 @@
 				A69CAB8E2C2B05360077883E /* AddView.swift in Sources */,
 				A69CAB8A2C2B02180077883E /* ListView.swift in Sources */,
 				A662E5972C74F2EF0074C81A /* MoviesViewModel.swift in Sources */,
+				A67CE0A02C77E64500F54956 /* TVSeriesViewModel.swift in Sources */,
 				A69CAB8C2C2B028B0077883E /* ListRowView.swift in Sources */,
 				A6E0F9FA2C75116600CB2B74 /* MovieDetailView.swift in Sources */,
 				A6EAEB1F2C46A83D00B5E192 /* Constants.swift in Sources */,
+				A67CE09E2C77E5F000F54956 /* TVSeriesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

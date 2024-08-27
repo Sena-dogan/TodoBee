@@ -43,7 +43,7 @@ struct MoviesGridView: View {
         .navigationTitle("Popular Movies")
         .onAppear {
             Task {
-                await viewModel.loadMovies()
+                await viewModel.loadMovies(for: MovieCategory.popular)
             }
         }
     }

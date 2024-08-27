@@ -11,9 +11,9 @@ import Foundation
 class MoviesViewModel: ObservableObject {
     @Published var movies: [Movie] = []
     
-    func loadMovies() async {
+    func loadMovies(for category: MovieCategory) async {
         do {
-            self.movies = try await NetworkManager.shared.fetchPopularMovies()
+            self.movies = try await NetworkManager.shared.fetchMovies(for: category)
         } catch {
             print("Failed to load movies: \(error)")
         }
