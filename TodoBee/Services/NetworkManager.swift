@@ -11,32 +11,29 @@ class NetworkManager {
     static let shared = NetworkManager()
     private let apiKey = "54bff5bee509b27e4eb82ef042d64876"
     
-    private func fetch<T: Decodable>(from endpoint: String, as type: T.Type) async throws -> T {
-        guard let url = URL(string: "https://api.themoviedb.org/3/\(endpoint)?api_key=\(apiKey)&language=en-US&page=1") else {
+    func request<T: Decodable>(from endpoint: String, method: HTTPMethod = .GET, body: Data? = nil, as type: T.Type) async throws -> T {
+        guard var urlComponents = URLComponents(string: "https://api.themoviedb.org/3/\(endpoint)") else {
             throw URLError(.badURL)
         }
-        
-        let (data, _) = try await URLSession.shared.data(from: url)
+        urlComponents.queryItems = [
+            URLQueryItem(name: "api_key", value: apiKey),
+            URLQueryItem(name: "language", value: "en-US"),
+            URLQueryItem(name: "page", value: "1")
+        ]
+        guard let url = urlComponents.url else {
+            throw URLError(.badURL)
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+
+        if let body = body {
+            request.httpBody = body
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        }
+
+        let (data, _) = try await URLSession.shared.data(for: request)
         let decodedResponse = try JSONDecoder().decode(T.self, from: data)
         return decodedResponse
     }
-    
-    func fetchMovies(for category: MovieCategory) async throws -> [Movie] {
-        let movieResponse: MovieResponse = try await fetch(from: "movie/\(category.rawValue)", as: MovieResponse.self)
-        return movieResponse.results
-    }
-    
-    func fetchTVSeries(for category: TVSeriesCategory) async throws -> [TVSeries] {
-        let tvResponse: TVResponse = try await fetch(from: "tv/\(category.rawValue)", as: TVResponse.self)
-        return tvResponse.results
-    }
 }
-
-struct MovieResponse: Decodable {
-    let results: [Movie]
-}
-
-struct TVResponse: Decodable {
-    let results: [TVSeries]
-}
-

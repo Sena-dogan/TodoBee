@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A64D29572C8F4BEF0091D6A3 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64D29562C8F4BEF0091D6A3 /* HTTPMethod.swift */; };
 		A65D37252C7E2DD600621368 /* TVSeriesGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D37242C7E2DD600621368 /* TVSeriesGridView.swift */; };
 		A65D37272C7E2FF600621368 /* TVSeriesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65D37262C7E2FF600621368 /* TVSeriesDetailView.swift */; };
 		A66224DB2C47FFC3006F9627 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66224DA2C47FFC3006F9627 /* UserDefaultsHelper.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A64D29562C8F4BEF0091D6A3 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		A65D37242C7E2DD600621368 /* TVSeriesGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesGridView.swift; sourceTree = "<group>"; };
 		A65D37262C7E2FF600621368 /* TVSeriesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesDetailView.swift; sourceTree = "<group>"; };
 		A66224DA2C47FFC3006F9627 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				A67CE0992C77E29900F54956 /* MovieCategory.swift */,
 				A67CE09B2C77E51600F54956 /* TVCategory.swift */,
+				A64D29562C8F4BEF0091D6A3 /* HTTPMethod.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				A69CAB8C2C2B028B0077883E /* ListRowView.swift in Sources */,
 				A65D37272C7E2FF600621368 /* TVSeriesDetailView.swift in Sources */,
 				A6E0F9FA2C75116600CB2B74 /* MovieDetailView.swift in Sources */,
+				A64D29572C8F4BEF0091D6A3 /* HTTPMethod.swift in Sources */,
 				A6EAEB1F2C46A83D00B5E192 /* Constants.swift in Sources */,
 				A67CE09E2C77E5F000F54956 /* TVSeriesModel.swift in Sources */,
 			);

@@ -8,14 +8,19 @@
 import Foundation
 
 @MainActor
-class MoviesViewModel: ObservableObject {
+final class MoviesViewModel: ObservableObject {
     @Published var movies: [Movie] = []
     
     func loadMovies(for category: MovieCategory) async {
         do {
-            self.movies = try await NetworkManager.shared.fetchMovies(for: category)
+            let movieResponse: MovieResponse = try await NetworkManager.shared.request(from: "movie/\(category.rawValue)", as: MovieResponse.self)
+            self.movies = movieResponse.results
         } catch {
             print("Failed to load movies: \(error)")
         }
     }
+}
+
+struct MovieResponse: Decodable {
+    let results: [Movie]
 }

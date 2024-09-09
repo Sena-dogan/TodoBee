@@ -8,14 +8,19 @@
 import Foundation
 
 @MainActor
-class TVSeriesViewModel: ObservableObject {
+final class TVSeriesViewModel: ObservableObject {
     @Published var tvSeries: [TVSeries] = []
     
     func loadTVSeries(for category: TVSeriesCategory) async {
         do {
-            self.tvSeries = try await NetworkManager.shared.fetchTVSeries(for: category)
+            let tvResponse: TVResponse = try await NetworkManager.shared.request(from: "tv/\(category.rawValue)", as: TVResponse.self)
+            self.tvSeries = tvResponse.results
         } catch {
             print("Failed to load TV series: \(error)")
         }
     }
+}
+
+struct TVResponse: Decodable {
+    let results: [TVSeries]
 }
