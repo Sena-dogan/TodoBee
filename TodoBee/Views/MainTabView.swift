@@ -39,6 +39,16 @@ struct MainTabView: View {
                 Text("TV")
             }
             .tag(2)
+            
+            NavigationView {
+                ManageMoviesView()
+            }
+            .tabItem {
+                Image(systemName: "film.fill")
+                Text("TV")
+            }
+            .tag(3)
+
         }
     }
 }

@@ -9,17 +9,24 @@ import Foundation
 
 class NetworkManager {
     static let shared = NetworkManager()
-    private let apiKey = "54bff5bee509b27e4eb82ef042d64876"
+    
+    private var apiKey: String {
+        guard let key = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String else {
+            fatalError("API Key not found in Info.plist")
+        }
+        return key
+    }
     
     func request<T: Decodable>(from endpoint: String, method: HTTPMethod = .GET, body: Data? = nil, as type: T.Type) async throws -> T {
         guard var urlComponents = URLComponents(string: "https://api.themoviedb.org/3/\(endpoint)") else {
             throw URLError(.badURL)
         }
+        
         urlComponents.queryItems = [
             URLQueryItem(name: "api_key", value: apiKey),
-            URLQueryItem(name: "language", value: "en-US"),
-            URLQueryItem(name: "page", value: "1")
+            URLQueryItem(name: "language", value: "en-US")
         ]
+        
         guard let url = urlComponents.url else {
             throw URLError(.badURL)
         }
@@ -36,4 +43,14 @@ class NetworkManager {
         let decodedResponse = try JSONDecoder().decode(T.self, from: data)
         return decodedResponse
     }
+    
+    func postRequest(to endpoint: String, body: Data) async throws {
+        let _: EmptyResponse = try await request(from: endpoint, method: .POST, body: body, as: EmptyResponse.self)
+    }
+    
+    func deleteRequest(from endpoint: String) async throws {
+        let _: EmptyResponse = try await request(from: endpoint, method: .DELETE, as: EmptyResponse.self)
+    }
 }
+
+struct EmptyResponse: Decodable {}

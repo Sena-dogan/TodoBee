@@ -19,6 +19,24 @@ final class TVSeriesViewModel: ObservableObject {
             print("Failed to load TV series: \(error)")
         }
     }
+    
+    func addTVSeries(tvSeriesData: Data) async {
+        do {
+            try await NetworkManager.shared.postRequest(to: "tv", body: tvSeriesData)
+            print("TV Series added successfully")
+        } catch {
+            print("Failed to add TV Series: \(error)")
+        }
+    }
+    
+    func deleteTVSeries(tvSeriesId: Int) async {
+        do {
+            try await NetworkManager.shared.deleteRequest(from: "tv/\(tvSeriesId)")
+            print("TV Series deleted successfully")
+        } catch {
+            print("Failed to delete TV Series: \(error)")
+        }
+    }
 }
 
 struct TVResponse: Decodable {

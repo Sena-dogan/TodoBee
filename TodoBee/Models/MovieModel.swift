@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Movie: Identifiable, Decodable {
+struct Movie: Identifiable, Codable {
     let id: Int
     let title: String
     let posterPath: String?
@@ -33,5 +33,11 @@ struct Movie: Identifiable, Decodable {
             return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
         }
         return nil
+    }
+    
+    // toData function to convert Movie object to Data
+    func toData() throws -> Data {
+        let encoder = JSONEncoder()
+        return try encoder.encode(self)
     }
 }

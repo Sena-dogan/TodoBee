@@ -19,6 +19,24 @@ final class MoviesViewModel: ObservableObject {
             print("Failed to load movies: \(error)")
         }
     }
+
+    func addMovie(movieData: Data) async {
+        do {
+            try await NetworkManager.shared.postRequest(to: "movie", body: movieData)
+            print("Movie added successfully")
+        } catch {
+            print("Failed to add movie: \(error)")
+        }
+    }
+    
+    func deleteMovie(movieId: Int) async {
+        do {
+            try await NetworkManager.shared.deleteRequest(from: "movie/\(movieId)")
+            print("Movie deleted successfully")
+        } catch {
+            print("Failed to delete movie: \(error)")
+        }
+    }
 }
 
 struct MovieResponse: Decodable {
